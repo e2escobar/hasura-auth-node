@@ -1,0 +1,28 @@
+version: '3.6'
+services:
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+    - "5432:5432"
+    volumes:
+    - pg_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgrespassword
+  graphql-engine:
+    ## uncomment next line to install hasura engine current version and comment alpha version
+    image: hasura/graphql-engine:v1.3.3
+    ## image: hasura/graphql-engine:v2.0.0-alpha.6
+    ports:
+    - "8080:8080"
+    depends_on:
+    - "postgres"
+    restart: always
+    environment:
+      HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:postgrespassword@host.docker.internal:5432/postgres
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console
+      ## uncomment next line to set an admin secret / same as you can find in .env file. 
+      ## HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
+      HASURA_GRAPHQL_JWT_SECRET: '{"type":"HS256", "key": "330OFD+o0^c7tzBNVfjpMkNDi2yAWSPKzQlk8O2IKoxQu4nF34dAh8s3TwpHwrdWT23"}'
+volumes:
+  pg_data:
