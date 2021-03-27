@@ -23,6 +23,6 @@ services:
       HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console
       ## uncomment next line to set an admin secret / same as you can find in .env file. 
       ## HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
-      HASURA_GRAPHQL_JWT_SECRET: '{"type":"HS256", "key": "330OFD+o0^c7tzBNVfjpMkNDi2yAWSPKzQlk8O2IKoxQu4nF34dAh8s3TwpHwrdWT23"}'
+      ## HASURA_GRAPHQL_JWT_SECRET: '{"type":"HS256", "key": "330OFD+o0^c7tzBNVfjpMkNDi2yAWSPKzQlk8O2IKoxQu4nF34dAh8s3TwpHwrdWT23"}'
 volumes:
   pg_data:
